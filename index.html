@@ -5,14 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Instituto Visão Solidária</title>
 <style>
-:root{--cream:#f3efe6;--paper:#fffdf7;--ink:#334235;--muted:#747a70;--olive:#5f6d4a;--olive-dark:#46523b;--line:#dcd6c9;--sand:#e9e1d2;--danger:#9f3b34}
+:root{--cream:#f3efe6;--paper:#fffdf7;--surface:#fff;--ink:#334235;--muted:#747a70;--olive:#5f6d4a;--olive-dark:#46523b;--line:#dcd6c9;--sand:#e9e1d2;--danger:#9f3b34;--header-bg:rgba(243,239,230,.94);--feature-bg:rgba(255,253,247,.72);--field-bg:#fff;--shadow:rgba(65,65,52,.07)}
+html[data-theme="dark"]{--cream:#151812;--paper:#1d211a;--surface:#252a21;--ink:#edf0e6;--muted:#aeb5a6;--olive:#9baa79;--olive-dark:#77865d;--line:#3a4034;--sand:#30362b;--danger:#e18279;--header-bg:rgba(21,24,18,.94);--feature-bg:rgba(37,42,33,.86);--field-bg:#242920;--shadow:rgba(0,0,0,.24)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif;transition:background .22s ease,color .22s ease}
 a{text-decoration:none;color:inherit}
 button,.btn{border:0;cursor:pointer}
 .wrap{width:min(1180px,calc(100% - 36px));margin:auto}
-.site-header{position:sticky;top:0;z-index:25;background:rgba(243,239,230,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(95,109,74,.14)}
+.site-header{position:sticky;top:0;z-index:25;background:var(--header-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:background .22s ease,border-color .22s ease}
 .header-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
 .logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:2.4px;font-size:14px}
 .logo-mark{width:40px;height:24px;position:relative}
@@ -38,28 +39,28 @@ button,.btn{border:0;cursor:pointer}
 .section h2{font-family:Georgia,serif;font-weight:500;font-size:clamp(34px,5vw,54px);margin:6px 0 0}
 .section-copy{max-width:480px;color:var(--muted);line-height:1.6}
 .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.feature{background:rgba(255,253,247,.72);border:1px solid var(--line);border-radius:22px;padding:24px}
+.feature{background:var(--feature-bg);border:1px solid var(--line);border-radius:22px;padding:24px}
 .feature strong{font-family:Georgia,serif;font-size:24px;font-weight:500;display:block;margin-bottom:8px}.feature p{margin:0;color:var(--muted);line-height:1.55}
 .catalog-shell{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:24px}
 .toolbar{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:22px}
-input,select,textarea{width:100%;padding:14px 15px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);font:inherit;outline:none}
+input,select,textarea{width:100%;padding:14px 15px;border:1px solid var(--line);border-radius:14px;background:var(--field-bg);color:var(--ink);font:inherit;outline:none}
 input:focus,select:focus,textarea:focus{border-color:var(--olive);box-shadow:0 0 0 3px rgba(95,109,74,.08)}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 8px 24px rgba(55,54,47,.05)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 8px 24px var(--shadow)}
 .card img{width:100%;height:245px;object-fit:cover;background:var(--sand)}
 .pad{padding:18px}.card h3{font-family:Georgia,serif;font-size:26px;font-weight:500;margin:5px 0 10px}.card p{color:var(--muted);line-height:1.5;min-height:44px}
 .meta{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--olive)}.price{font-size:19px;font-weight:800;margin:14px 0 8px}.stock{font-size:13px;margin:8px 0 14px}.stock.zero{color:var(--danger);font-weight:800}
 .card button,.modal button,.drawer button{border-radius:12px;padding:12px 15px;font-weight:700;background:var(--olive);color:#fff}
-button.outline{background:transparent;color:var(--olive-dark);border:1px solid rgba(70,82,59,.35)}
+button.outline{background:transparent;color:var(--olive-dark);border:1px solid var(--line)}.theme-toggle{width:44px;height:44px;padding:0;border-radius:50%;display:inline-grid;place-items:center;background:transparent;color:var(--ink);border:1px solid var(--line);font-size:18px;line-height:1}.theme-toggle:hover{background:var(--feature-bg)}
 .card button:disabled{opacity:.45;cursor:not-allowed}
 .contact-band{background:var(--olive-dark);color:#fff;border-radius:28px;padding:36px;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center}
-.contact-band h3{font-family:Georgia,serif;font-size:38px;font-weight:500;margin:0 0 10px}.contact-band p{margin:0;color:rgba(255,255,255,.75);line-height:1.6}.contact-band .btn{background:#fff;color:var(--olive-dark)}
+.contact-band h3{font-family:Georgia,serif;font-size:38px;font-weight:500;margin:0 0 10px}.contact-band p{margin:0;color:rgba(255,255,255,.75);line-height:1.6}.contact-band .btn{background:var(--paper);color:var(--olive-dark)}
 .cartFab{position:fixed;right:20px;bottom:20px;z-index:30;box-shadow:0 12px 30px rgba(0,0,0,.2);border-radius:999px;padding:14px 18px;background:var(--olive-dark);color:#fff;font-weight:800}
 .drawer{position:fixed;right:0;top:0;bottom:0;width:min(430px,100%);background:var(--paper);z-index:40;transform:translateX(100%);transition:.22s;padding:20px;overflow:auto;box-shadow:-10px 0 35px rgba(0,0,0,.15)}.drawer.open{transform:none}
 .row{display:flex;gap:10px;align-items:center;justify-content:space-between}.cartItem{border-bottom:1px solid var(--line);padding:14px 0}.qty{width:80px}
 .modal{position:fixed;inset:0;background:rgba(31,39,31,.56);z-index:50;display:none;align-items:center;justify-content:center;padding:18px}.modal.open{display:flex}.modalbox{background:var(--paper);width:min(780px,100%);max-height:92vh;overflow:auto;border-radius:24px;padding:24px}
 .modal h2{font-family:Georgia,serif;font-size:36px;font-weight:500;margin:0}.hidden{display:none!important}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.tabs button.active{background:var(--olive-dark)}
-table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;font-size:14px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.formgrid .full{grid-column:1/-1}.small{font-size:12px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:14px;overflow:hidden}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;font-size:14px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.formgrid .full{grid-column:1/-1}.small{font-size:12px;color:var(--muted)}
 footer{padding:42px 0 70px;text-align:center;color:var(--muted);font-size:14px}
 @media(max-width:820px){.header-inner{height:auto;padding:14px 0;align-items:flex-start}.nav{flex-wrap:wrap;justify-content:flex-end}.hero{padding-top:28px}.hero-card{padding:46px 22px;border-radius:24px}.hero h1{font-size:50px}.hero p{font-size:18px}.features,.grid,.contact-band{grid-template-columns:1fr}.toolbar{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.card img{height:230px}}
 @media(max-width:520px){.logo{max-width:170px;line-height:1.35}.nav .btn.secondary{display:none}.hero h1{font-size:43px}.hero-card{padding:38px 18px}.wrap{width:min(100% - 24px,1180px)}}
@@ -71,6 +72,7 @@ footer{padding:42px 0 70px;text-align:center;color:var(--muted);font-size:14px}
     <div class="logo"><div class="logo-mark"><span></span></div><div>INSTITUTO VISÃO SOLIDÁRIA</div></div>
     <nav class="nav">
       <a class="btn secondary" href="#catalogo">Ver catálogo</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ativar modo noturno" title="Alternar modo noturno">🌙</button>
       <button class="btn" id="adminOpen">Área administrativa</button>
     </nav>
   </div>
@@ -140,6 +142,30 @@ footer{padding:42px 0 70px;text-align:center;color:var(--muted);font-size:14px}
 <section id="historyTab" class="hidden"><div style="overflow:auto"><table><thead><tr><th>Data</th><th>Produto</th><th>Movimento</th><th>Anterior</th><th>Novo</th></tr></thead><tbody id="history"></tbody></table></div></section><p id="adminMsg" class="small"></p></div></div></div>
 
 <footer><div class="wrap">INSTITUTO VISÃO SOLIDÁRIA · St. C Norte CNC 2 lote 20 - Taguatinga, Brasília - DF · WhatsApp +55 61 99506-2546</div></footer>
+<script>
+(function(){
+  const root=document.documentElement;
+  const toggle=document.getElementById("themeToggle");
+  const saved=localStorage.getItem("ivs-theme");
+  const systemDark=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const initial=saved||(systemDark?"dark":"light");
+  function apply(theme){
+    root.dataset.theme=theme;
+    if(toggle){
+      const dark=theme==="dark";
+      toggle.textContent=dark?"☀️":"🌙";
+      toggle.setAttribute("aria-label",dark?"Ativar modo claro":"Ativar modo noturno");
+      toggle.title=dark?"Ativar modo claro":"Ativar modo noturno";
+    }
+  }
+  apply(initial);
+  if(toggle) toggle.addEventListener("click",()=>{
+    const next=root.dataset.theme==="dark"?"light":"dark";
+    localStorage.setItem("ivs-theme",next);
+    apply(next);
+  });
+})();
+</script>
 <script type="module">
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.76.1";
 const sb=createClient("https://hncpyfvyffawdveidikl.supabase.co","sb_publishable_vuoGNU0lSuM9Trm7RqCoQQ_LyedLwMb");
