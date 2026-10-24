@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Área administrativa | Instituto Visão Solidária</title>
+<style>
+:root{--bg:#f3efe6;--panel:#fffdf7;--card:#fff;--ink:#334235;--muted:#747a70;--olive:#5f6d4a;--olive2:#46523b;--line:#dcd6c9;--field:#fff;--danger:#9f3b34}
+html[data-theme="dark"]{--bg:#151812;--panel:#1d211a;--card:#252a21;--ink:#edf0e6;--muted:#aeb5a6;--olive:#9baa79;--olive2:#77865d;--line:#3a4034;--field:#242920;--danger:#e18279}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+a{text-decoration:none;color:inherit}button,.btn{cursor:pointer;border:0}
+.shell{min-height:100vh}.topbar{position:sticky;top:0;z-index:20;background:var(--panel);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1240px;margin:auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:1.7px}.brand small{display:block;font-weight:500;letter-spacing:0;color:var(--muted);margin-top:3px}
+.top-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border-radius:12px;background:var(--olive);color:#fff;font-weight:700}
+.btn.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.theme{width:42px;height:42px;border-radius:50%;background:transparent;border:1px solid var(--line);color:var(--ink)}
+.main{max-width:1240px;margin:auto;padding:28px 24px 56px}.hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:22px}
+.hero h1{font:500 clamp(34px,5vw,50px)/1 Georgia,serif;margin:0 0 8px}.hero p{margin:0;color:var(--muted)}
+.auth-card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:24px}
+.auth-card{max-width:520px;margin:60px auto}.hidden{display:none!important}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}.tabs button{padding:11px 16px;border-radius:12px;background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:700}.tabs button.active{background:var(--olive);color:#fff;border-color:var(--olive)}
+.section-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:20px}.section-card h2,.section-card h3{margin-top:0}
+.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.full{grid-column:1/-1}
+.field{display:flex;flex-direction:column;gap:7px}.field label{font-weight:700;font-size:14px}
+input,select,textarea{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:var(--field);color:var(--ink);font:inherit;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--olive);box-shadow:0 0 0 3px rgba(95,109,74,.1)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.msg{font-size:13px;color:var(--muted);margin-top:12px}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}table{width:100%;border-collapse:collapse;background:var(--card);min-width:760px}th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;font-size:14px;vertical-align:middle}th{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
+.badge{display:inline-flex;padding:5px 9px;border-radius:999px;background:var(--panel);border:1px solid var(--line);font-size:12px}.warn{color:#b36f00;font-weight:700}
+.row-actions{display:flex;gap:7px;flex-wrap:wrap}.row-actions button{padding:8px 10px;border-radius:9px;background:var(--olive);color:#fff}.row-actions button.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.brand-list{display:grid;gap:10px;margin-top:18px}.brand-item{padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+@media(max-width:760px){.topbar-inner,.hero{align-items:flex-start;flex-direction:column}.top-actions{width:100%}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.main{padding:20px 14px 40px}.topbar-inner{padding:14px}.auth-card,.panel{padding:18px}.hero h1{font-size:36px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="topbar"><div class="topbar-inner">
+  <div class="brand"><div>INSTITUTO VISÃO SOLIDÁRIA<small>Painel administrativo</small></div></div>
+  <div class="top-actions">
+    <a class="btn secondary" href="./" target="_blank" rel="noopener">Abrir site</a>
+    <button class="theme" id="themeToggle" type="button">🌙</button>
+    <button class="btn secondary hidden" id="logout">Sair</button>
+  </div>
+</div></header>
+
+<main class="main">
+<section id="authBox" class="auth-card">
+  <h1 style="font:500 38px Georgia,serif;margin:0 0 8px">Acesso administrativo</h1>
+  <p style="color:var(--muted);margin:0 0 22px">Entre com um e-mail autorizado para gerenciar produtos, marcas e estoque.</p>
+  <div class="formgrid">
+    <div class="field full"><label>E-mail</label><input id="email" type="email" autocomplete="username"/></div>
+    <div class="field full"><label>Senha</label><input id="password" type="password" minlength="8" autocomplete="current-password"/></div>
+  </div>
+  <div class="actions"><button class="btn" id="login">Entrar</button><button class="btn secondary" id="signup">Criar/ativar acesso</button></div>
+  <p id="authMsg" class="msg"></p>
+</section>
+
+<section id="adminPanel" class="hidden">
+  <div class="hero">
+    <div><h1>Área administrativa</h1><p><b id="adminEmail"></b> · gerenciamento do catálogo e estoque</p></div>
+  </div>
+
+  <div class="panel">
+    <div class="tabs">
+      <button class="active" data-tab="productsTab">Produtos</button>
+      <button data-tab="brandsTab">Marcas</button>
+      <button data-tab="historyTab">Histórico de estoque</button>
+    </div>
+
+    <section id="productsTab">
+      <div class="section-card">
+        <h2>Novo / editar produto</h2>
+        <input id="productId" type="hidden"/>
+        <div class="formgrid">
+          <div class="field"><label>Nome</label><input id="pName"/></div>
+          <div class="field"><label>Categoria</label><input id="pCategory" placeholder="Ex.: Óculos de grau"/></div>
+          <div class="field"><label>Marca</label><select id="pBrand"><option value="">Sem marca</option></select></div>
+          <div class="field"><label>Submarca / linha</label><select id="pSubbrand"><option value="">Sem submarca</option></select></div>
+          <div class="field"><label>Preço (R$)</label><input id="pPrice" type="number" min="0" step="0.01"/></div>
+          <div class="field"><label>Status</label><select id="pStatus"><option value="draft">Rascunho</option><option value="published">Publicado</option><option value="archived">Arquivado</option></select></div>
+          <div class="field"><label>Quantidade em estoque</label><input id="pStock" type="number" min="0" step="1" value="0"/></div>
+          <div class="field"><label>Estoque mínimo</label><input id="pMinStock" type="number" min="0" step="1" value="0"/></div>
+          <div class="field full"><label>Descrição</label><textarea id="pDescription" rows="4"></textarea></div>
+          <div class="field full"><label>Foto do produto</label><input id="pImage" type="file" accept="image/png,image/jpeg,image/webp"/></div>
+        </div>
+        <div class="actions"><button class="btn" id="saveProduct">Salvar produto</button><button class="btn secondary" id="resetProduct">Limpar formulário</button></div>
+        <p id="adminMsg" class="msg"></p>
+      </div>
+
+      <div class="section-card">
+        <h2>Produtos cadastrados</h2>
+        <div class="table-wrap"><table><thead><tr><th>Produto</th><th>Status</th><th>Estoque</th><th>Preço</th><th>Ações</th></tr></thead><tbody id="adminProducts"></tbody></table></div>
+      </div>
+    </section>
+
+    <section id="brandsTab" class="hidden">
+      <div class="section-card">
+        <h2>Marcas e linhas</h2>
+        <div class="formgrid">
+          <div class="field"><label>Nova marca</label><input id="brandName"/></div>
+          <div class="field" style="justify-content:end"><button class="btn" id="addBrand">Adicionar marca</button></div>
+          <div class="field"><label>Marca</label><select id="subBrandParent"></select></div>
+          <div class="field"><label>Nova submarca / linha</label><input id="subBrandName"/></div>
+        </div>
+        <div class="actions"><button class="btn" id="addSubBrand">Adicionar submarca</button></div>
+        <div id="brandList" class="brand-list"></div>
+      </div>
+    </section>
+
+    <section id="historyTab" class="hidden">
+      <div class="section-card">
+        <h2>Histórico de estoque</h2>
+        <div class="table-wrap"><table><thead><tr><th>Data</th><th>Produto</th><th>Movimento</th><th>Anterior</th><th>Novo</th></tr></thead><tbody id="history"></tbody></table></div>
+      </div>
+    </section>
+  </div>
+</section>
+</main>
+</div>
+
+<script>
+(function(){
+ const root=document.documentElement,t=document.getElementById("themeToggle");
+ const saved=localStorage.getItem("ivs-theme")||((matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");
+ function apply(v){root.dataset.theme=v;t.textContent=v==="dark"?"☀️":"🌙"}
+ apply(saved);t.onclick=()=>{const n=root.dataset.theme==="dark"?"light":"dark";localStorage.setItem("ivs-theme",n);apply(n)}
+})();
+</script>
+<script type="module">
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.76.1";
+const sb=createClient("https://hncpyfvyffawdveidikl.supabase.co","sb_publishable_vuoGNU0lSuM9Trm7RqCoQQ_LyedLwMb");
+const $=id=>document.getElementById(id);
+const money=v=>new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"}).format(Number(v||0));
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let products=[],brands=[],subbrands=[];
+
+async function isAdmin(){
+ const {data:{user}}=await sb.auth.getUser(); if(!user)return false;
+ const {data}=await sb.from("admin_users").select("email,role,active").eq("user_id",user.id).eq("active",true).maybeSingle();
+ return data||false;
+}
+async function refreshAuth(){
+ const adm=await isAdmin();
+ $("authBox").classList.toggle("hidden",!!adm);$("adminPanel").classList.toggle("hidden",!adm);$("logout").classList.toggle("hidden",!adm);
+ if(adm){$("adminEmail").textContent=adm.email;await adminLoad()}
+}
+$("login").onclick=async()=>{const {error}=await sb.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});$("authMsg").textContent=error?error.message:"Login realizado.";await refreshAuth()};
+$("signup").onclick=async()=>{const email=$("email").value.trim(),password=$("password").value;if(!["jaime66fla@gmail.com","jaime22032002@gmail.com"].includes(email.toLowerCase())){$("authMsg").textContent="Este e-mail não está autorizado como administrador.";return}const {error}=await sb.auth.signUp({email,password});$("authMsg").textContent=error?error.message:"Acesso criado. Se receber um e-mail de confirmação, confirme e depois faça login."};
+$("logout").onclick=async()=>{await sb.auth.signOut();await refreshAuth()};
+
+async function adminLoad(){
+ const [{data:p},{data:b},{data:s},{data:h}]=await Promise.all([
+  sb.from("products").select("*,brands(name),subbrands(name)").order("created_at",{ascending:false}),
+  sb.from("brands").select("*").order("name"),
+  sb.from("subbrands").select("*").order("name"),
+  sb.from("inventory_movements").select("*,products(name)").order("created_at",{ascending:false}).limit(200)
+ ]);
+ products=p||[];brands=b||[];subbrands=s||[];fillBrandSelects();
+ $("adminProducts").innerHTML=products.map(p=>'<tr><td><b>'+esc(p.name)+'</b><div class="msg">'+esc([p.brands?.name,p.subbrands?.name,p.category].filter(Boolean).join(" · "))+'</div></td><td><span class="badge">'+esc(p.status)+'</span></td><td>'+(p.stock_quantity<=p.minimum_stock?'<span class="warn">'+p.stock_quantity+' ⚠</span>':p.stock_quantity)+'</td><td>'+((p.price_on_request||p.price==null)?"Sob consulta":money(p.price))+'</td><td><div class="row-actions"><button data-edit="'+p.id+'">Editar</button><button class="secondary" data-archive="'+p.id+'">Arquivar</button><button class="secondary" data-delete="'+p.id+'">Excluir</button></div></td></tr>').join("");
+ document.querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>editProduct(b.dataset.edit));
+ document.querySelectorAll("[data-archive]").forEach(b=>b.onclick=async()=>{await sb.from("products").update({status:"archived"}).eq("id",b.dataset.archive);await adminLoad()});
+ document.querySelectorAll("[data-delete]").forEach(b=>b.onclick=async()=>{if(confirm("Excluir este produto?")){await sb.from("products").delete().eq("id",b.dataset.delete);await adminLoad()}});
+ $("history").innerHTML=(h||[]).map(x=>'<tr><td>'+new Date(x.created_at).toLocaleString("pt-BR")+'</td><td>'+esc(x.products?.name||"")+'</td><td>'+esc(x.movement_type)+'</td><td>'+x.previous_quantity+'</td><td>'+x.new_quantity+'</td></tr>').join("");
+ $("brandList").innerHTML=brands.map(b=>'<div class="brand-item"><b>'+esc(b.name)+'</b><div class="msg">'+esc(subbrands.filter(s=>s.brand_id===b.id).map(s=>s.name).join(", ")||"Sem submarcas")+'</div></div>').join("");
+}
+function fillBrandSelects(){const opts='<option value="">Sem marca</option>'+brands.map(b=>'<option value="'+b.id+'">'+esc(b.name)+'</option>').join("");$("pBrand").innerHTML=opts;$("subBrandParent").innerHTML=brands.map(b=>'<option value="'+b.id+'">'+esc(b.name)+'</option>').join("");filterSubbrands()}
+function filterSubbrands(){const id=$("pBrand").value;$("pSubbrand").innerHTML='<option value="">Sem submarca</option>'+subbrands.filter(s=>!id||s.brand_id===id).map(s=>'<option value="'+s.id+'">'+esc(s.name)+'</option>').join("")}
+$("pBrand").onchange=filterSubbrands;
+function editProduct(id){const p=products.find(x=>x.id===id);$("productId").value=p.id;$("pName").value=p.name||"";$("pCategory").value=p.category||"";$("pBrand").value=p.brand_id||"";filterSubbrands();$("pSubbrand").value=p.subbrand_id||"";$("pPrice").value=p.price??"";$("pStatus").value=p.status;$("pStock").value=p.stock_quantity;$("pMinStock").value=p.minimum_stock;$("pDescription").value=p.description||"";scrollTo({top:0,behavior:"smooth"})}
+function resetProduct(){["productId","pName","pCategory","pPrice","pDescription"].forEach(id=>$(id).value="");$("pBrand").value="";filterSubbrands();$("pStatus").value="draft";$("pStock").value=0;$("pMinStock").value=0;$("pImage").value=""}
+$("resetProduct").onclick=resetProduct;
+$("saveProduct").onclick=async()=>{const id=$("productId").value;let image_path=id?products.find(x=>x.id===id)?.image_path:null;const file=$("pImage").files[0];if(file){const path=Date.now()+"-"+file.name.replace(/[^a-zA-Z0-9._-]/g,"_");const {error:e}=await sb.storage.from("product-images").upload(path,file,{upsert:false});if(e){$("adminMsg").textContent=e.message;return}image_path=path}const row={name:$("pName").value.trim(),category:$("pCategory").value.trim()||null,brand_id:$("pBrand").value||null,subbrand_id:$("pSubbrand").value||null,price:$("pPrice").value===""?null:Number($("pPrice").value),status:$("pStatus").value,stock_quantity:Number($("pStock").value)||0,minimum_stock:Number($("pMinStock").value)||0,description:$("pDescription").value.trim()||null,image_path};if(!row.name){$("adminMsg").textContent="Informe o nome do produto.";return}const q=id?sb.from("products").update(row).eq("id",id):sb.from("products").insert(row);const {error}=await q;$("adminMsg").textContent=error?error.message:"Produto salvo com sucesso.";if(!error){resetProduct();await adminLoad()}};
+$("addBrand").onclick=async()=>{const name=$("brandName").value.trim();if(!name)return;const {error}=await sb.from("brands").insert({name});$("adminMsg").textContent=error?error.message:"Marca adicionada.";if(!error){$("brandName").value="";await adminLoad()}};
+$("addSubBrand").onclick=async()=>{const name=$("subBrandName").value.trim(),brand_id=$("subBrandParent").value;if(!name||!brand_id)return;const {error}=await sb.from("subbrands").insert({name,brand_id});$("adminMsg").textContent=error?error.message:"Submarca adicionada.";if(!error){$("subBrandName").value="";await adminLoad()}};
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("active"));b.classList.add("active");["productsTab","brandsTab","historyTab"].forEach(id=>$(id).classList.toggle("hidden",id!==b.dataset.tab))});
+sb.auth.onAuthStateChange(()=>setTimeout(refreshAuth,0));
+await refreshAuth();
+</script>
+</body>
+</html>
